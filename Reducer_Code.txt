@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+import sys
+
+current_item = None
+current_count = 0
+
+for line in sys.stdin:
+    item, count = line.strip().split("\t")
+    count = int(count)
+
+    if current_item == item:
+        current_count += count
+    else:
+        if current_item:
+            print(f"{current_item}\t{current_count}")
+        current_item = item
+        current_count = count
+
+if current_item:
+    print(f"{current_item}\t{current_count}")
